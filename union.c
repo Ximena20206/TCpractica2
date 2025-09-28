@@ -10,7 +10,7 @@ int longitud_de_cadena(char *a){//FUNCION LONGITUD CADENA
     return i;
 }
 
-char* concatenarcadena(char *a,char* b){
+char* concatenarcadena(char *a,char* b){//FUNCION CONCATENAR CADENAS
     char* c;
     int tamA=longitud_de_cadena(a),tamB=longitud_de_cadena(b);
     int tamTotal=tamA+tamB;
@@ -33,16 +33,13 @@ char* concatenarcadena(char *a,char* b){
             return c;
 
 }
-char** concatenar(char**a,char**b,int n,int m,int *tam_res){
+char** concatenar(char**a,char**b,int n,int m,int *tam_res){//FUNCION CONCATENAR LENGUAJES
 char **c;
     int k = 0, bandera, i;
 
     c = (char**)malloc((m*n) * sizeof(char*));
-    
 
-  
-
-    //Aqui revisaremos si algun elemento de b esta en a para no agregarlo y solo agregar los propios de B
+    //CONCATENAMOS CADA CADENA DEL LENGUAJE A CON CADA CADENA DEL LENGUAJE B
     for(i=0; i<n; i++){
         bandera = 0;
         for(int j=0; j<m; j++){
@@ -52,17 +49,21 @@ char **c;
         
     }
 
-     *tam_res = k; 
+     *tam_res = k; //NOS DICE CUANTOS ELEMENTOS HAY EN EL ARREGLO
     return c;
 
 
 }
-char** interseccion(char**a,char**b,int n,int m,int *tam_res){
+char** interseccion(char**a,char**b,int n,int m,int *tam_res){//FUNCION INTERSECCION
 
    
 int tam_ch,tam_gr,i,k=0;
     char **c;
-    if(n<m){
+                     /*EL LENGUAJE QUE TENGA MENOS ELEMENTOS SERA EL TAMAÑO DEL ARREGLO RESULTANTE 
+                     YA QUE SERA EL NUMERO MAXIMO DE INTERSECCIONES QUE PODRAN EXISTIR
+                        | */
+    if(n<m){//<----------
+            
     tam_ch=n;
      tam_gr=m;
     }
