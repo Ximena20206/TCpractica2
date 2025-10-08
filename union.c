@@ -30,7 +30,7 @@ char* concatenarcadena(char *a,char* b){//FUNCION CONCATENAR CADENAS
           
             
             
-            return c;
+            return c ;
 
 }
 char** concatenar(char**a,char**b,int n,int m,int *tam_res){//FUNCION CONCATENAR LENGUAJES
