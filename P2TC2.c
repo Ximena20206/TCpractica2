@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <locale.h>
 
+#define MAX_NOMBRE 100
 #define MAX_PALABRA 100
 #define MAX_LENGUAJE 100
 
@@ -261,24 +262,42 @@ void guardarEnArchivo(char **L,int n,const char *nombreArchivo){
 // ----------------------------------------------------------
 // PROGRAMA PRINCIPAL
 // ----------------------------------------------------------
-int main(int argc,char *argv[]){
-    if(argc!=4){printf("Uso: %s <archivo_L1> <archivo_L2> <archivo_L3>\n",argv[0]); return 1;}
-
+int main(){//int argc,char *argv[]){
+    //sif(argc!=4){printf("Uso: %s <archivo_L1> <archivo_L2> <archivo_L3>\n",argv[0]); return 1;}
+    char archivo1[MAX_NOMBRE], archivo2[MAX_NOMBRE], archivo3[MAX_NOMBRE];
     ListaDoble L1,L2,L3;
-    inicializarLista(&L1);
-    inicializarLista(&L2);
-    inicializarLista(&L3);
-
-    cargarDesdeArchivo(&L1,argv[1]);
-    cargarDesdeArchivo(&L2,argv[2]);
-    cargarDesdeArchivo(&L3,argv[3]);
-
-    printf("\n--- L1 ---\n"); mostrarLista(&L1);
-    printf("--- L2 ---\n"); mostrarLista(&L2);
-    printf("--- L3 ---\n"); mostrarLista(&L3);
+    Sleep(5000); 
+        system("cls");
 
     int opcion=0;
     while(opcion!=8){
+        inicializarLista(&L1);
+        inicializarLista(&L2);
+        inicializarLista(&L3);
+        printf("=== CARGA DE LISTAS ===\n");
+        printf("Ingrese el nombre del archivo para L1: ");
+        scanf("%99s", archivo1);
+
+        printf("Ingrese el nombre del archivo para L2: ");
+        scanf("%99s", archivo2);
+
+        printf("Ingrese el nombre del archivo para L3: ");
+        scanf("%99s", archivo3);
+
+        // Carga los archivos en las listas
+        cargarDesdeArchivo(&L1, archivo1);
+        cargarDesdeArchivo(&L2, archivo2);
+        cargarDesdeArchivo(&L3, archivo3);
+
+        // Muestra las listas
+        printf("\n--- L1 ---\n");
+        mostrarLista(&L1);
+
+        printf("\n--- L2 ---\n");
+        mostrarLista(&L2);
+
+        printf("\n--- L3 ---\n");
+        mostrarLista(&L3);
         
         printf("\n========= MENU =========\n");
         printf("1. Union\n2. Concatenacion\n3. Potencia\n4. Reflexion\n5. Cerradura de Kleene\n6. Cerradura positiva\n7. Mostrar lenguajes\n8. Salir\n");
@@ -399,11 +418,13 @@ int main(int argc,char *argv[]){
         }
         Sleep(5000); 
         system("cls");
+
+        liberarLista(&L1);
+        liberarLista(&L2);
+        liberarLista(&L3);
     }
 
-    liberarLista(&L1);
-    liberarLista(&L2);
-    liberarLista(&L3);
+    
 
     return 0;
 }
